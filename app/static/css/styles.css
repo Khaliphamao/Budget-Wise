@@ -1,0 +1,94 @@
+/* Budget Wise Custom CSS - Optimized for Nigerian users with variable network conditions */
+
+/* Custom Variables */
+:root {
+  --naira-green: #008751;
+  --primary-color: #0d6efd;
+  --secondary-bg: #f8f9fa;
+}
+
+/* Global Styles */
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Naira Symbol */
+.naira-symbol {
+  font-weight: bold;
+}
+
+/* Card Customization */
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Dashboard Cards */
+.border-success {
+  border-color: var(--naira-green) !important;
+}
+
+/* Table Customization */
+.table th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.4em 0.6em;
+}
+
+/* Optimize image loading */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navbar customization */
+.navbar-brand {
+  letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+}
+
+/* Mobile Optimization */
+@media (max-width: 576px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.9rem;
+  }
+}
+
+/* Low Data Mode - Reduce animations for better performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %} {% block title %}Connect Email via IMAP - Budget
+Wise{% endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <div class="text-center mb-4">
+          <i class="fas fa-envelope-open-text fa-3x text-primary mb-3"></i>
+          <h2 class="card-title">Connect Your Email via IMAP</h2>
+          <p class="text-muted">
+            Budget Wise can connect directly to your email using IMAP to scan
+            for transaction emails.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <div class="d-flex">
+            <i class="fas fa-info-circle fa-2x me-3"></i>
+            <div>
+              <h5>How it works:</h5>
+              <ol class="mb-0">
+                <li>
+                  We connect to your email via IMAP to scan for transaction
+                  alerts from Nigerian banks and fintechs
+                </li>
+                <li>
+                  We extract transaction details like amount, date, and
+                  description from these emails
+                </li>
+                <li>We categorize and organize them in your dashboard</li>
+                <li>
+                  Your password is <strong>not</strong> stored in our database
+                  for security reasons
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <form method="post" class="mt-4">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="your.email@example.com"
+              required
+              value="{{ current_user.email or '' }}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Email Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Your email password"
+              required
+            />
+            <div class="form-text">
+              Your password will be used to connect to your email but won't be
+              stored.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="imap_server" class="form-label"
+              >IMAP Server (Optional)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="imap_server"
+              name="imap_server"
+              placeholder="imap.gmail.com"
+              value="{{ current_user.imap_server or '' }}"
+            />
+            <div class="form-text">
+              Common IMAP servers:
+              <ul class="mt-1">
+                <li>Gmail: imap.gmail.com</li>
+                <li>Yahoo: imap.mail.yahoo.com</li>
+                <li>Outlook: outlook.office365.com</li>
+              </ul>
+
+              <div class="alert alert-warning mt-2">
+                <strong>Note for Gmail users:</strong> You'll need to enable
+                "Less secure app access" or use an "App Password" if you have
+                2-factor authentication enabled.
+                <a
+                  href="https://support.google.com/accounts/answer/185833"
+                  target="_blank"
+                  >Learn more</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plug me-2"></i> Connect Email
+            </button>
+            <a
+              href="{{ url_for('dashboard') }}"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-arrow-left me-2"></i> Back to Dashboard
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block title %}Login - Budget Wise{% endblock %} {%
+block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">Login to Your Account</h2>
+
+        <form method="POST" action="{{ url_for('login') }}">
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <div class="input-group">
+              <span class="input-group-text">+234</span>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                name="phone"
+                placeholder="08012345678"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+          </div>
+        </form>
+
+        <div class="text-center mt-4">
+          <p>
+            Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  // Basic Nigerian phone number validation
+  document.getElementById("phone").addEventListener("input", function (e) {
+    let phone = e.target.value;
+
+    // Remove non-digit characters
+    phone = phone.replace(/\D/g, "");
+
+    // Ensure it starts with 0
+    if (phone.length > 0 && phone[0] !== "0") {
+      phone = "0" + phone;
+    }
+
+    // Limit to 11 digits
+    phone = phone.substring(0, 11);
+
+    e.target.value = phone;
+  });
+</script>
+{% endblock %}

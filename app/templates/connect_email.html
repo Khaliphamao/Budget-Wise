@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% block title %}Connect Gmail - Budget Wise{%
+endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <div class="text-center mb-4">
+          <i class="fas fa-envelope-open-text fa-3x text-primary mb-3"></i>
+          <h2 class="card-title">Connect Your Gmail Account</h2>
+          <p class="text-muted">
+            Budget Wise needs permission to read your Gmail account to scan for
+            transaction emails.
+          </p>
+        </div>
+
+        <div class="alert alert-info">
+          <div class="d-flex">
+            <i class="fas fa-info-circle fa-2x me-3"></i>
+            <div>
+              <h5>How it works:</h5>
+              <ol class="mb-0">
+                <li>
+                  We scan your Gmail inbox for transaction alerts from Nigerian
+                  banks and fintechs
+                </li>
+                <li>
+                  We extract transaction details like amount, date, and
+                  description
+                </li>
+                <li>We categorize and organize them in your dashboard</li>
+                <li>
+                  Your email credentials are securely stored in our database
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card h-100 border-0 bg-light">
+              <div class="card-body">
+                <h5 class="card-title">Supported Services</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-check-circle text-success me-2"></i> GTBank
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle text-success me-2"></i> OPay
+                  </li>
+                  <li>
+                    <i class="fas fa-clock text-muted me-2"></i> Access Bank
+                    (Coming soon)
+                  </li>
+                  <li>
+                    <i class="fas fa-clock text-muted me-2"></i> First Bank
+                    (Coming soon)
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 border-0 bg-light">
+              <div class="card-body">
+                <h5 class="card-title">Privacy & Security</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-lock text-success me-2"></i> We only read
+                    transaction emails
+                  </li>
+                  <li>
+                    <i class="fas fa-shield-alt text-success me-2"></i> We never
+                    send emails from your account
+                  </li>
+                  <li>
+                    <i class="fas fa-user-shield text-success me-2"></i> NDPR
+                    compliant data security
+                  </li>
+                  <li>
+                    <i class="fas fa-trash text-success me-2"></i> You can
+                    revoke access at any time
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          {% if current_user.has_gmail_access() %}
+          <div class="alert alert-success">
+            <i class="fas fa-check-circle me-2"></i> Your Gmail account is
+            connected!
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a
+              href="{{ url_for('sync_transactions') }}"
+              class="btn btn-primary btn-lg px-4 me-md-2"
+            >
+              <i class="fas fa-sync me-2"></i> Sync Transactions Now
+            </a>
+            <a
+              href="{{ url_for('test_gmail_connection') }}"
+              class="btn btn-outline-primary btn-lg px-4 me-md-2"
+            >
+              <i class="fas fa-stethoscope me-2"></i> Test Connection
+            </a>
+            <a
+              href="{{ url_for('disconnect_email') }}"
+              class="btn btn-outline-danger btn-lg px-4"
+              onclick="return confirm('Are you sure you want to disconnect your Gmail account? Your existing transactions will remain, but no new ones will be imported.');"
+            >
+              <i class="fas fa-unlink me-2"></i> Disconnect Gmail
+            </a>
+          </div>
+          {% else %}
+          <div class="d-grid gap-2 col-md-6 mx-auto">
+            <a href="{{ url_for('authorize') }}" class="btn btn-primary btn-lg">
+              <i class="fab fa-google me-2"></i> Connect Gmail Account
+            </a>
+            <a
+              href="{{ url_for('dashboard') }}"
+              class="btn btn-outline-secondary"
+            >
+              Skip for Now
+            </a>
+          </div>
+          <p class="text-muted mt-3 small">
+            By connecting your account, you agree to our
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

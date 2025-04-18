@@ -1,0 +1,112 @@
+{% extends 'base.html' %} {% block title %}Budget Wise - Track Your Finances{%
+endblock %} {% block content %}
+<div class="row align-items-center g-4 py-5">
+  <div class="col-lg-6">
+    <h1 class="fw-bold mb-3">Manage Your Money Wisely</h1>
+    <p class="lead mb-4">
+      Budget Wise helps you track your finances in one place, by automatically
+      categorizing your expenses from email notifications.
+    </p>
+    <p class="mb-4">
+      Designed specifically for Nigerian users, our app is lightweight and
+      optimized for variable network conditions.
+    </p>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a
+        href="{{ url_for('signup') }}"
+        class="btn btn-primary btn-lg px-4 me-md-2"
+        >Get Started</a
+      >
+      <a
+        href="{{ url_for('login') }}"
+        class="btn btn-outline-primary btn-lg px-4"
+        >Login</a
+      >
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow border-0">
+      <div class="card-body p-4">
+        <h3 class="card-title fw-bold mb-4">Features</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item border-0 d-flex">
+            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+            <div>
+              <h5 class="mb-1">Email Integration</h5>
+              <p class="text-muted mb-0">
+                Automatically import transactions from your bank email alerts
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item border-0 d-flex">
+            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+            <div>
+              <h5 class="mb-1">Smart Categorization</h5>
+              <p class="text-muted mb-0">
+                Nigeria-specific categories for your expenses
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item border-0 d-flex">
+            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+            <div>
+              <h5 class="mb-1">Financial Overview</h5>
+              <p class="text-muted mb-0">
+                Clear dashboard with income, expenses and savings data
+              </p>
+            </div>
+          </li>
+          <li class="list-group-item border-0 d-flex">
+            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+            <div>
+              <h5 class="mb-1">Privacy Focused</h5>
+              <p class="text-muted mb-0">
+                Your data stays private with secure access to emails
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 py-5 border-top">
+  <div class="col-12 text-center mb-4">
+    <h2 class="fw-bold">Supported Financial Institutions</h2>
+    <p class="text-muted">
+      We automatically recognize and parse emails from these Nigerian banks and
+      fintechs
+    </p>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-4">
+        <h4 class="mb-3 fw-bold">GTBank</h4>
+        <p class="text-muted">
+          Automatically categorize your GTBank transaction alerts
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-4">
+        <h4 class="mb-3 fw-bold">OPay</h4>
+        <p class="text-muted">Track your OPay transactions and transfers</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-4">
+        <h4 class="mb-3 fw-bold">More Coming Soon</h4>
+        <p class="text-muted">
+          We're adding more Nigerian banks and fintechs regularly
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
